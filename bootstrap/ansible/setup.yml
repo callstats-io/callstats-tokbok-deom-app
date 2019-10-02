@@ -1,0 +1,11 @@
+---
+- hosts: callstatsTokboxApp
+  become: true
+
+#   tasks:
+#     - name: Install curl
+#       apt: pkg=curl state=installed
+#       #become: true
+
+  roles:
+    - { role: jeqo.nginx }

@@ -1,0 +1,20 @@
+- name: install packages
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - ca-certificates
+    - nginx
+    - gettext-base
+
+- name: Copy server.crt
+  copy: src=/home/kupuka/workspace/agilityfeat/aws/0-keypair/server.crt dest=/etc/nginx/server.crt owner=root group=root mode=0644
+
+- name: Copy server.key
+  copy: src=/home/kupuka/workspace/agilityfeat/aws/0-keypair/server.key dest=/etc/nginx/server.key owner=root group=root mode=0644
+
+- name: Create vidyo site
+  template: src=callstats.conf.j2 dest=/etc/nginx/conf.d/callstats.conf owner=root group=root mode=0644
+  notify:
+    - restart nginx
+  tags:
+    - nginx
