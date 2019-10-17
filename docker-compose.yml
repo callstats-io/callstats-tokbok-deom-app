@@ -1,0 +1,18 @@
+version: '2'
+services:
+  #########################
+  # CSIO tokbox demo application
+  #########################
+  callstats-tokbox-demo-app:
+    build:
+      context: ./../callstats-tokbox-demo-app
+    environment:
+      TOKBOX_API_KEY: 'TOKBOX APP KEY'
+      TOKBOX_AUTH_TOKEN: 'TOKBOX AUTH TOKEN'
+      CALLSTATS_APP_ID: 'CALLSTATS APPLICATION KEY'
+      CALLSTATS_APP_SECRET: 'CALLSTATS APPLICATION SECRET'
+      PORT: '7070'
+      TARGET: "dev"
+    ports:
+      - "7070:7070"
+    command: "python helloworld.py"

@@ -1,3 +1,4 @@
 --index-url https://pypi.python.org/simple/
 opentok>=2.4.1
 Flask
+pyopenssl==18.0.0
